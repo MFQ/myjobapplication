@@ -8,16 +8,27 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
+  getRouters() {
+    const { token } = localStorage;
+    if (token) {
+      return (
         <div>
           <Route path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
         </div>
-      </Router>
+      );
+    }
+    return (
+      <div>
+        <Route path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+      </div>
     );
+  }
+
+  render() {
+    const { getRouters } = this;
+    return <Router>{getRouters()}</Router>;
   }
 }
 

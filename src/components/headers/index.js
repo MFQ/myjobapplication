@@ -1,35 +1,38 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Navbar, NavItem } from "react-materialize";
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.showLogout = this.showLogout.bind(this);
+    this.showAutheicatedLinks = this.showAutheicatedLinks.bind(this);
   }
 
-  showLogout() {
+  showAutheicatedLinks() {
     const { token } = localStorage;
 
     if (token) {
       return (
-        <NavItem
-          onClick={() => {
-            localStorage.clear();
-            window.location = "/login";
-          }}
-        >
-          Logout
-        </NavItem>
+        <Fragment>
+          <NavItem href="/coverletters"> Cover Letter </NavItem>
+          <NavItem
+            onClick={() => {
+              localStorage.clear();
+              window.location = "/login";
+            }}
+          >
+            Logout
+          </NavItem>
+        </Fragment>
       );
     }
     return <NavItem />;
   }
 
   render() {
-    const { showLogout } = this;
+    const { showAutheicatedLinks } = this;
     return (
       <Navbar brand="My Job Application" right>
-        {showLogout()}
+        {showAutheicatedLinks()}
       </Navbar>
     );
   }

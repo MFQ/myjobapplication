@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Query } from "react-apollo";
 import { Link } from "react-router-dom";
+import { Button } from "react-materialize";
 
 import { CoverLetterQuries } from "../../util/quries";
 import CardItem from "../../components/CardItem";
@@ -25,7 +26,24 @@ class CoverLetter extends Component {
 
           return (
             <Fragment>
-              <Link to="/coverletters/new"> Cover Letter New </Link>
+              <Button
+                floating
+                fab="vertical"
+                faicon="fa fa-plus"
+                className="red"
+                large
+                style={{ bottom: "45px", right: "24px" }}
+                icon="apps"
+              >
+                <Link to="/coverletters/new">
+                  <Button
+                    floating
+                    className="green"
+                    icon="add"
+                    href="/coverletters/"
+                  />
+                </Link>
+              </Button>
               {renderCoverLetters(coverletters)}
             </Fragment>
           );

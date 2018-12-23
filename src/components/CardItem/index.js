@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { Row, Col, Card } from "react-materialize";
+import { Row, Col, Card, Button } from "react-materialize";
 
 type Props = {
   kind: string,
@@ -11,12 +11,12 @@ type Props = {
 };
 
 const BtnActions = (id: number) => [
-  <a key={`${id}readmore`} href={`/coverletters/${id}`}>
+  <Button key={`${id}readmore`} href={`/coverletters/${id}`}>
     Read more
-  </a>,
-  <a key={`${id}edit`} href={`/coverletters/${id}/edit`}>
+  </Button>,
+  <Button key={`${id}edit`} href={`/coverletters/${id}/edit`}>
     Edit
-  </a>
+  </Button>
 ];
 
 const CardItem = ({ content, kind, id }: Props) => (

@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../../components/headers";
 
 const PublicContent = () => (
   <div>
@@ -14,7 +13,6 @@ const Home = () => {
 
   return (
     <div className="App">
-      <Header />
       {token ? <AutheticatedContent /> : <PublicContent />}
     </div>
   );

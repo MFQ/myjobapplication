@@ -8,22 +8,23 @@ type Props = {
   kind: string,
   content: string,
   id: number,
-  deleteItem: func
+  deleteItem: func,
+  hostname: string
 };
 
-const BtnActions = (id: number) => [
-  <Button key={`${id}readmore`} href={`/coverletters/${id}`}>
+const BtnActions = (id: number, hostname: string) => [
+  <Button key={`${id}readmore`} node="a" href={`/${hostname}/${id}`}>
     Read more
   </Button>,
-  <Button key={`${id}edit`} href={`/coverletters/${id}/edit`}>
+  <Button key={`${id}edit`} node="a" href={`/${hostname}/${id}/edit`}>
     Edit
   </Button>
 ];
 
-const CardItem = ({ content, kind, id, deleteItem }: Props) => (
+const CardItem = ({ content, kind, id, deleteItem, hostname }: Props) => (
   <Row>
     <Col m={8} s={12}>
-      <Card horizontal actions={BtnActions(id)}>
+      <Card horizontal actions={BtnActions(id, hostname)}>
         <Row>
           <Col m={11} s={11} />
           <Col m={1} s={1}>

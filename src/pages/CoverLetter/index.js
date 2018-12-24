@@ -12,6 +12,7 @@ class CoverLetter extends Component {
     const { mutate } = this.props;
     return coverletters.map(({ content, id, kind, deleteCoverLetter }) => (
       <CardItem
+        hostname="coverletters"
         content={content}
         deleteItem={() => {
           mutate({
@@ -49,9 +50,7 @@ class CoverLetter extends Component {
         {({ loading, error, data }) => {
           if (loading) return <p> Loading ... </p>;
           if (error) return <p> Error </p>;
-
           const { coverletters } = data;
-
           return (
             <Fragment>
               <Button

@@ -10,6 +10,16 @@ const CoverLetterQuries = gql`
   }
 `;
 
+const CoverLetterFilterQuries = id => gql`
+  {
+    coverletters(id: ${id}) {
+      kind,
+      content,
+      id
+    }
+  }
+`;
+
 export default {};
 
-export { CoverLetterQuries };
+export { CoverLetterQuries, CoverLetterFilterQuries };

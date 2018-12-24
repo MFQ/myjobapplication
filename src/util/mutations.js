@@ -16,6 +16,12 @@ const DeleteCoverLetter = gql`
   }
 `;
 
+const UpdateCoverLetter = gql`
+  mutation UpdateCoverLetter($id: Int, $kind: String, $content: String) {
+    updateCoverLetter(id: $id, kind: $kind, content: $content)
+  }
+`;
+
 export default {};
 
-export { CreateCoverLetter, DeleteCoverLetter };
+export { CreateCoverLetter, DeleteCoverLetter, UpdateCoverLetter };

@@ -9,7 +9,9 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CoverLetter from "./pages/CoverLetter";
-import NewCoveLetter from "./pages/CoverLetter/NewCoverLetter";
+import NewCoverLetter from "./pages/CoverLetter/NewCoverLetter";
+import EditCoverLetter from "./pages/CoverLetter/EditCoverLetter";
+import DetailCoverLetter from "./pages/CoverLetter/DetailCoverLetter";
 
 class App extends Component {
   getRouters() {
@@ -24,7 +26,9 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/coverletters/new" component={NewCoveLetter} />
+            <Route path="/coverletters/new" component={NewCoverLetter} />
+            <Route path="/coverletters/:id/edit" component={EditCoverLetter} />
+            <Route path="/coverletters/:id" component={DetailCoverLetter} />
             <Route path="/coverletters" component={CoverLetter} />
           </Switch>
         </ApolloProvider>

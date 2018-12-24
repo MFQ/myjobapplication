@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { CreateCoverLetter } from "../../util/mutations";
 import { CoverLetterQuries } from "../../util/quries";
+import CoverLetterForm from "./Form";
 
-class NewCoveLetter extends Component {
+class NewCoverLetter extends Component {
   render() {
     const { mutate, history } = this.props;
     return (
-      <Formik
+      <CoverLetterForm
+        submitLabel="Add Cover Letter"
         initialValues={{ kind: "", content: "" }}
-        validate={values => {
+        onValidate={values => {
           let errors = {};
           if (!values.kind) {
             errors.kind = "Required";
@@ -35,25 +36,9 @@ class NewCoveLetter extends Component {
               console.log(error);
             });
         }}
-      >
-        {({ isSubmitting }) => (
-          <Form>
-            <Field type="text" name="kind" />
-            <ErrorMessage name="kind" component="div" />
-
-            <Field type="text" name="content" />
-            <ErrorMessage name="content" component="div" />
-
-            <button type="submit" disabled={isSubmitting}>
-              Add CoverLetter
-            </button>
-          </Form>
-        )}
-      </Formik>
+      />
     );
   }
 }
 
-export default graphql(CreateCoverLetter)(NewCoveLetter);
-
-// refetched
+export default graphql(CreateCoverLetter)(NewCoverLetter);

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Query } from "react-apollo";
+import { Query, graphql } from "react-apollo";
 import { Row, Col, Card, Button } from "react-materialize";
 
-import { CoverLetterFilterQuries } from "../../util/quries";
+import { CoverLetterFilterQuries, CoverLetterQuries } from "../../util/quries";
+import { DeleteCoverLetter } from "../../util/mutations";
 
 class DetailCoverLetter extends Component {
   render() {
@@ -10,7 +11,8 @@ class DetailCoverLetter extends Component {
       match: {
         params: { id }
       },
-      history
+      history,
+      mutate
     } = this.props;
 
     return (
@@ -20,7 +22,7 @@ class DetailCoverLetter extends Component {
           if (error) return <p> Error </p>;
           console.log(data);
           const { coverletters } = data;
-          const { kind, content } = coverletters[0];
+          const { kind, content, id } = coverletters[0];
 
           return (
             <Row>
@@ -29,7 +31,21 @@ class DetailCoverLetter extends Component {
                   <Row>
                     <Col m={11} s={11} />
                     <Col m={1} s={1}>
-                      <Button floating className="red" icon="delete" />
+                      <Button
+                        floating
+                        className="red"
+                        icon="delete"
+                        onClick={() => {
+                          mutate({
+                            variables: { id },
+                            refetchQueries: [{ query: CoverLetterQuries }]
+                          })
+                            .then(e => history.push("/coverletters"))
+                            .catch(error => {
+                              console.log(error);
+                            });
+                        }}
+                      />
                     </Col>
                   </Row>
                   <Row>
@@ -48,4 +64,4 @@ class DetailCoverLetter extends Component {
   }
 }
 
-export default DetailCoverLetter;
+export default graphql(DeleteCoverLetter)(DetailCoverLetter);

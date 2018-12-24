@@ -7,7 +7,6 @@ import CoverLetterForm from "./Form";
 
 class EditCoverLetter extends Component {
   render() {
-    console.log(this.props);
     const {
       match: {
         params: { id }

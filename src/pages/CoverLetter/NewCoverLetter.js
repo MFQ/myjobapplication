@@ -3,6 +3,7 @@ import { graphql } from "react-apollo";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import { CreateCoverLetter } from "../../util/mutations";
+import { CoverLetterQuries } from "../../util/quries";
 
 class NewCoveLetter extends Component {
   render() {
@@ -22,7 +23,8 @@ class NewCoveLetter extends Component {
         }}
         onSubmit={(values, { setSubmitting }) => {
           mutate({
-            variables: { ...values }
+            variables: { ...values },
+            refetchQueries: [{ query: CoverLetterQuries }]
           })
             .then(({ data }) => {
               setSubmitting(false);
@@ -53,3 +55,5 @@ class NewCoveLetter extends Component {
 }
 
 export default graphql(CreateCoverLetter)(NewCoveLetter);
+
+// refetched

@@ -1,17 +1,45 @@
 import React, { Component, Fragment } from "react";
-import { Query } from "react-apollo";
+import { Query, graphql } from "react-apollo";
 import { Link } from "react-router-dom";
 import { Button } from "react-materialize";
 
 import { CoverLetterQuries } from "../../util/quries";
 import CardItem from "../../components/CardItem";
+import { DeleteCoverLetter } from "../../util/mutations";
 
 class CoverLetter extends Component {
-  renderCoverLetters(coverletters) {
-    return coverletters.map(({ content, id, kind }) => (
-      <CardItem content={content} kind={kind} id={id} key={id} />
+  renderCoverLetters = coverletters => {
+    const { mutate } = this.props;
+    return coverletters.map(({ content, id, kind, deleteCoverLetter }) => (
+      <CardItem
+        content={content}
+        deleteItem={() => {
+          mutate({
+            variables: { id },
+            update: (proxy, responseData) => {
+              const { coverletters } = proxy.readQuery({
+                query: CoverLetterQuries
+              });
+              const newData = coverletters.filter(d => d.id !== id);
+              proxy.writeQuery({
+                query: CoverLetterQuries,
+                data: { coverletters: newData }
+              });
+            }
+          })
+            .then(({ data }) => {
+              console.log(data);
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }}
+        kind={kind}
+        id={id}
+        key={id}
+      />
     ));
-  }
+  };
 
   render() {
     const { renderCoverLetters } = this;
@@ -53,4 +81,4 @@ class CoverLetter extends Component {
   }
 }
 
-export default CoverLetter;
+export default graphql(DeleteCoverLetter)(CoverLetter);

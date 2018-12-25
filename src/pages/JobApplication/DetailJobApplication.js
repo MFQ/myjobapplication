@@ -25,7 +25,37 @@ class DetailJobApplication extends Component {
           if (loading) return <p> Loading ... </p>;
           if (error) return <p> Error </p>;
           const { jobApplications } = data;
-          return JSON.stringify(jobApplications[0]);
+          const {
+            id,
+            company,
+            jobDescription,
+            status,
+            coverLetter,
+            appliedDate,
+            source,
+            response,
+            timeTookToApply,
+            country
+          } = jobApplications[0];
+
+          return (
+            <Row>
+              <Col m={8} s={12}>
+                <Card horizontal>
+                  <Row> id: {id} </Row>
+                  <Row> company: {company} </Row>
+                  <Row> Job Description:{jobDescription} </Row>
+                  <Row> status:{status} </Row>
+                  <Row> coverLetter:{coverLetter} </Row>
+                  <Row> appliedDate:{appliedDate} </Row>
+                  <Row> source:{source} </Row>
+                  <Row> response:{response} </Row>
+                  <Row> timeTookToApply:{timeTookToApply} </Row>
+                  <Row> country:{country} </Row>
+                </Card>
+              </Col>
+            </Row>
+          );
         }}
       </Query>
     );

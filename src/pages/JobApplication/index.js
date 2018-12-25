@@ -8,9 +8,33 @@ import { DeleteJobApplication } from "../../util/mutations";
 import TrJobApplication from "../../components/TrJobApplication";
 
 class JobApplication extends Component {
+  deleteJobApplication = id => {
+    const { mutate } = this.props;
+    mutate({
+      variables: { id },
+      update: (proxy, responseData) => {
+        const { jobApplications } = proxy.readQuery({
+          query: JobApplicationQuries
+        });
+        const newData = jobApplications.filter(ja => ja.id !== id);
+        proxy.writeQuery({
+          query: JobApplicationQuries,
+          data: { jobApplications: newData }
+        });
+      }
+    })
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   renderTrs = jobApplications => {
+    const { deleteJobApplication } = this;
     return jobApplications.map(jobApplication => (
-      <TrJobApplication {...jobApplication} />
+      <TrJobApplication {...jobApplication} deleteFun={deleteJobApplication} />
     ));
   };
 

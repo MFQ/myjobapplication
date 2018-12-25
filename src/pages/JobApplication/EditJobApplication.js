@@ -11,7 +11,6 @@ import JobApplicationForm from "./Form";
 
 class EditJobApplication extends Component {
   render() {
-    // return "ajksbdajsdbjad Edit Job application";
     const {
       match: {
         params: { id }

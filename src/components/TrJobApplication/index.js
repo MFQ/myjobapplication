@@ -13,7 +13,8 @@ type Props = {
   source: string,
   response: string,
   timeTookToApply: string,
-  country: string
+  country: string,
+  deleteFun: func
 };
 
 const TrJobApplication = ({
@@ -26,7 +27,8 @@ const TrJobApplication = ({
   source,
   response,
   timeTookToApply,
-  country
+  country,
+  deleteFun
 }: Props) => (
   <tr key={`${id}trs`}>
     <td>{id}</td>
@@ -54,7 +56,12 @@ const TrJobApplication = ({
         icon="create"
         href={`/jobApplications/${id}/edit`}
       />
-      <Button floating className="red" icon="delete" href="/coverletters/" />
+      <Button
+        floating
+        className="red"
+        icon="delete"
+        onClick={() => deleteFun(id)}
+      />
     </td>
   </tr>
 );

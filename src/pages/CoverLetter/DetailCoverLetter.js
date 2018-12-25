@@ -20,7 +20,6 @@ class DetailCoverLetter extends Component {
         {({ loading, error, data }) => {
           if (loading) return <p> Loading ... </p>;
           if (error) return <p> Error </p>;
-          console.log(data);
           const { coverletters } = data;
           const { kind, content, id } = coverletters[0];
 

@@ -20,6 +20,49 @@ const CoverLetterFilterQuries = id => gql`
   }
 `;
 
+const JobApplicationQuries = gql`
+  {
+    jobApplications {
+      company
+      jobDescription
+      status
+      coverLetter
+      appliedDate
+      userId
+      id
+      source
+      response
+      timeTookToApply
+      country
+      notes
+    }
+  }
+`;
+
+const JobApplicationFilterQuries = id => gql`
+  {
+    jobApplications(id: ${id}) {
+      company
+      jobDescription
+      status
+      coverLetter
+      appliedDate
+      userId
+      id
+      source
+      response
+      timeTookToApply
+      country
+      notes
+    }
+  }
+`;
+
 export default {};
 
-export { CoverLetterQuries, CoverLetterFilterQuries };
+export {
+  CoverLetterQuries,
+  CoverLetterFilterQuries,
+  JobApplicationQuries,
+  JobApplicationFilterQuries
+};

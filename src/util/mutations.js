@@ -22,6 +22,90 @@ const UpdateCoverLetter = gql`
   }
 `;
 
+const CreateJobApplication = gql`
+  mutation CreateJobApplications(
+    $jobDescription: String
+    $company: String
+    $country: String
+    $status: String
+    $appliedDate: String
+    $coverLetter: String
+    $source: String
+    $response: String
+    $timeTookToApply: String
+    $notes: String
+  ) {
+    createJobApplications(
+      jobDescription: $jobDescription
+      company: $company
+      country: $country
+      status: $status
+      appliedDate: $appliedDate
+      coverLetter: $coverLetter
+      source: $source
+      response: $response
+      timeTookToApply: $timeTookToApply
+      notes: $notes
+    ) {
+      company
+      jobDescription
+      status
+      coverLetter
+      appliedDate
+      userId
+      id
+      source
+      response
+      timeTookToApply
+      country
+      notes
+    }
+  }
+`;
+
+const UpdateJobApplication = gql`
+  mutation UpdateJobApplication(
+    $id: Int
+    $jobDescription: String
+    $company: String
+    $country: String
+    $status: String
+    $appliedDate: String
+    $coverLetter: String
+    $source: String
+    $response: String
+    $timeTookToApply: String
+    $notes: String
+  ) {
+    updateJobApplication(
+      id: $id
+      jobDescription: $jobDescription
+      company: $company
+      country: $country
+      status: $status
+      appliedDate: $appliedDate
+      coverLetter: $coverLetter
+      source: $source
+      response: $response
+      timeTookToApply: $timeTookToApply
+      notes: $notes
+    )
+  }
+`;
+
+const DeleteJobApplication = gql`
+  mutation deleteJobApplication($id: Int) {
+    deleteJobApplication(id: $id)
+  }
+`;
+
 export default {};
 
-export { CreateCoverLetter, DeleteCoverLetter, UpdateCoverLetter };
+export {
+  CreateCoverLetter,
+  DeleteCoverLetter,
+  UpdateCoverLetter,
+  CreateJobApplication,
+  UpdateJobApplication,
+  DeleteJobApplication
+};

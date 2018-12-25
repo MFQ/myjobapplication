@@ -14,6 +14,7 @@ class Header extends Component {
       return (
         <Fragment>
           <NavItem href="/coverletters"> Cover Letter </NavItem>
+          <NavItem href="/jobapplications"> Job Application </NavItem>
           <NavItem
             onClick={() => {
               localStorage.clear();

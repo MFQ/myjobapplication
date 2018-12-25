@@ -8,10 +8,16 @@ import Header from "./components/headers";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+
 import CoverLetter from "./pages/CoverLetter";
 import NewCoverLetter from "./pages/CoverLetter/NewCoverLetter";
 import EditCoverLetter from "./pages/CoverLetter/EditCoverLetter";
 import DetailCoverLetter from "./pages/CoverLetter/DetailCoverLetter";
+
+import JobApplication from "./pages/JobApplication";
+import NewJobApplication from "./pages/JobApplication/NewJobApplication";
+import EditJobApplication from "./pages/JobApplication/EditJobApplication";
+import DetailJobApplication from "./pages/JobApplication/DetailJobApplication";
 
 class App extends Component {
   getRouters() {
@@ -26,6 +32,18 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
+
+            <Route path="/jobapplications/new" component={NewJobApplication} />
+            <Route
+              path="/jobapplications/:id/edit"
+              component={EditJobApplication}
+            />
+            <Route
+              path="/jobapplications/:id"
+              component={DetailJobApplication}
+            />
+            <Route path="/jobapplications" component={JobApplication} />
+
             <Route path="/coverletters/new" component={NewCoverLetter} />
             <Route path="/coverletters/:id/edit" component={EditCoverLetter} />
             <Route path="/coverletters/:id" component={DetailCoverLetter} />

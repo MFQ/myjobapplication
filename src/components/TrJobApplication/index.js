@@ -1,6 +1,6 @@
 // @flow
 
-import React, { Component } from "react";
+import React from "react";
 import { tr, td, Button } from "react-materialize";
 
 type Props = {

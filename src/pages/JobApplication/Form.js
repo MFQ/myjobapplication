@@ -27,13 +27,13 @@ const JobApplicationForm = ({
         <Field type="text" name="company" />
         <ErrorMessage name="company" component="div" />
 
-        <Field type="textarea" name="jobDescription" />
+        <Field component="textarea" name="jobDescription" />
         <ErrorMessage name="jobDescription" component="div" />
 
         <Field type="text" name="status" />
         <ErrorMessage name="status" component="div" />
 
-        <Field type="textarea" name="coverLetter" />
+        <Field component="textarea" name="coverLetter" />
         <ErrorMessage name="coverLetter" component="div" />
 
         <Field type="text" name="appliedDate" />
@@ -42,7 +42,7 @@ const JobApplicationForm = ({
         <Field type="text" name="source" />
         <ErrorMessage name="source" component="div" />
 
-        <Field type="textarea" name="response" />
+        <Field component="textarea" name="response" />
         <ErrorMessage name="response" component="div" />
 
         <Field type="text" name="timeTookToApply" />

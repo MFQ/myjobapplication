@@ -4,6 +4,7 @@ import { graphql } from "react-apollo";
 import { CreateCoverLetter } from "../../util/mutations";
 import { CoverLetterQuries } from "../../util/quries";
 import CoverLetterForm from "./Form";
+import { OnValidateErrors } from "../../util";
 
 class NewCoverLetter extends Component {
   render() {
@@ -12,16 +13,7 @@ class NewCoverLetter extends Component {
       <CoverLetterForm
         submitLabel="Add Cover Letter"
         initialValues={{ kind: "", content: "" }}
-        onValidate={values => {
-          let errors = {};
-          if (!values.kind) {
-            errors.kind = "Required";
-          }
-          if (!values.content) {
-            errors.content = "Required";
-          }
-          return errors;
-        }}
+        onValidate={OnValidateErrors}
         onSubmit={(values, { setSubmitting }) => {
           mutate({
             variables: { ...values },

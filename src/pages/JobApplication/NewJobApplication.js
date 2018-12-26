@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { graphql } from "react-apollo";
-import { forEach } from "lodash";
 
 import { CreateJobApplication } from "../../util/mutations";
 import { JobApplicationQuries } from "../../util/quries";
-
+import { OnValidateErrors } from "../../util";
 import JobApplicationForm from "./Form";
 
 class NewJobApplication extends Component {
@@ -25,15 +24,7 @@ class NewJobApplication extends Component {
           country: "",
           notes: ""
         }}
-        onValidate={values => {
-          let errors = {};
-          forEach(values, (value, key) => {
-            if (value === "") {
-              errors[key] = "Required";
-            }
-          });
-          return errors;
-        }}
+        onValidate={OnValidateErrors}
         onSubmit={(values, { setSubmitting }) => {
           mutate({
             variables: { ...values },

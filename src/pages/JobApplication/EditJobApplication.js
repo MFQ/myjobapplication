@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Query, graphql } from "react-apollo";
-import { forEach } from "lodash";
 
 import { UpdateJobApplication } from "../../util/mutations";
 import {
@@ -8,6 +7,7 @@ import {
   JobApplicationFilterQuries
 } from "../../util/quries";
 import JobApplicationForm from "./Form";
+import { OnValidateErrors } from "../../util";
 
 class EditJobApplication extends Component {
   render() {
@@ -30,15 +30,7 @@ class EditJobApplication extends Component {
             <JobApplicationForm
               submitLabel="Update Job Application"
               initialValues={{ ...jobApplications[0] }}
-              onValidate={values => {
-                let errors = {};
-                forEach(values, (value, key) => {
-                  if (value === "") {
-                    errors[key] = "Required";
-                  }
-                });
-                return errors;
-              }}
+              onValidate={OnValidateErrors}
               onSubmit={(values, { setSubmitting }) => {
                 mutate({
                   variables: { ...values },

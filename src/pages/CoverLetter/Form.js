@@ -23,10 +23,15 @@ const CoverLetterForm = ({
   >
     {({ isSubmitting }) => (
       <Form>
-        <Field type="text" name="kind" />
+        <Field type="text" placeholder="Kind" label="Kind" name="kind" />
         <ErrorMessage name="kind" component="div" />
 
-        <Field type="text" name="content" />
+        <Field
+          type="textarea"
+          placeholder="Content"
+          label="content"
+          name="content"
+        />
         <ErrorMessage name="content" component="div" />
 
         <button type="submit" disabled={isSubmitting}>

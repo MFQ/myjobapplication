@@ -27,7 +27,7 @@ const CoverLetterForm = ({
         <ErrorMessage name="kind" component="div" />
 
         <Field
-          type="textarea"
+          type="text"
           placeholder="Content"
           label="content"
           name="content"

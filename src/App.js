@@ -22,9 +22,10 @@ import DetailJobApplication from "./pages/JobApplication/DetailJobApplication";
 class App extends Component {
   getRouters() {
     const { token } = localStorage;
+    const hostname = `${process.env.REACT_APP_API_SERVER}`;
     if (token) {
       const client = new ApolloClient({
-        uri: "http://localhost:3000/graphql",
+        uri: `${hostname}/graphql`,
         headers: { Authorization: token }
       });
       return (

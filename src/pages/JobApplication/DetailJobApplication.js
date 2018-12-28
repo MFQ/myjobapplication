@@ -1,22 +1,15 @@
 import React, { Component } from "react";
-import { Query, graphql } from "react-apollo";
-import { Row, Col, Card, Button } from "react-materialize";
+import { Query } from "react-apollo";
+import { Row, Col, Card } from "react-materialize";
 
-import {
-  JobApplicationQuries,
-  JobApplicationFilterQuries
-} from "../../util/quries";
-
-import { DeleteJobApplication } from "../../util/mutations";
+import { JobApplicationFilterQuries } from "../../util/quries";
 
 class DetailJobApplication extends Component {
   render() {
     const {
       match: {
         params: { id }
-      },
-      history,
-      mutate
+      }
     } = this.props;
 
     return (

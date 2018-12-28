@@ -44,16 +44,24 @@ class Register extends Component {
             >
               {({ isSubmitting }) => (
                 <Form>
-                  <Field type="email" name="email" />
+                  <Field type="email" placeholder="Email" name="email" />
                   <ErrorMessage name="email" component="div" />
 
-                  <Field type="text" name="username" />
+                  <Field type="text" placeholder="Username" name="username" />
                   <ErrorMessage name="username" component="div" />
 
-                  <Field type="password" name="password" />
+                  <Field
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                  />
                   <ErrorMessage name="password" component="div" />
 
-                  <Field type="password" name="confirmPassword" />
+                  <Field
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                  />
                   <ErrorMessage name="confirmPassword" component="div" />
 
                   <button type="submit" disabled={isSubmitting}>

@@ -24,34 +24,46 @@ const JobApplicationForm = ({
   >
     {({ isSubmitting }) => (
       <Form>
-        <Field type="text" name="company" />
+        <Field type="text" placeholder="Company" name="company" />
         <ErrorMessage name="company" component="div" />
 
-        <Field component="textarea" name="jobDescription" />
+        <Field
+          component="textarea"
+          placeholder="Job Description"
+          name="jobDescription"
+        />
         <ErrorMessage name="jobDescription" component="div" />
 
-        <Field type="text" name="status" />
+        <Field type="text" placeholder="status" name="status" />
         <ErrorMessage name="status" component="div" />
 
-        <Field component="textarea" name="coverLetter" />
+        <Field
+          component="textarea"
+          placeholder="Cover Letter"
+          name="coverLetter"
+        />
         <ErrorMessage name="coverLetter" component="div" />
 
-        <Field type="text" name="appliedDate" />
+        <Field type="text" placeholder="Applied Date" name="appliedDate" />
         <ErrorMessage name="appliedDate" component="div" />
 
-        <Field type="text" name="source" />
+        <Field type="text" placeholder="Source" name="source" />
         <ErrorMessage name="source" component="div" />
 
-        <Field component="textarea" name="response" />
+        <Field component="textarea" placeholder="Response" name="response" />
         <ErrorMessage name="response" component="div" />
 
-        <Field type="text" name="timeTookToApply" />
+        <Field
+          type="text"
+          placeholder="Time Took to Apply"
+          name="timeTookToApply"
+        />
         <ErrorMessage name="timeTookToApply" component="div" />
 
-        <Field type="text" name="country" />
+        <Field type="text" placeholder="Country" name="country" />
         <ErrorMessage name="country" component="div" />
 
-        <Field type="textarea" name="notes" />
+        <Field type="textarea" placeholder="Notes" name="notes" />
         <ErrorMessage name="notes" component="div" />
 
         <button type="submit" disabled={isSubmitting}>

@@ -42,10 +42,14 @@ class Login extends Component {
             >
               {({ isSubmitting }) => (
                 <Form>
-                  <Field type="email" name="email" />
+                  <Field type="email" placeholder="Email" name="email" />
                   <ErrorMessage name="email" component="div" />
 
-                  <Field type="password" name="password" />
+                  <Field
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                  />
 
                   <button type="submit" disabled={isSubmitting}>
                     Login

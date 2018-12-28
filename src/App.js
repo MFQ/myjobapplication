@@ -18,11 +18,12 @@ import JobApplication from "./pages/JobApplication";
 import NewJobApplication from "./pages/JobApplication/NewJobApplication";
 import EditJobApplication from "./pages/JobApplication/EditJobApplication";
 import DetailJobApplication from "./pages/JobApplication/DetailJobApplication";
+import AppProvider from "./util/AppContext";
 
 class App extends Component {
-  getRouters() {
+  getRouters(hostname) {
     const { token } = localStorage;
-    const hostname = `${process.env.REACT_APP_API_SERVER}`;
+
     if (token) {
       const client = new ApolloClient({
         uri: `${hostname}/graphql`,
@@ -65,7 +66,14 @@ class App extends Component {
 
   render() {
     const { getRouters } = this;
-    return <Router>{getRouters()}</Router>;
+    const hostname = `${process.env.REACT_APP_API_SERVER}`;
+    return (
+      <Router>
+        <AppProvider.Provider value={{ hostname }}>
+          {getRouters(hostname)}
+        </AppProvider.Provider>
+      </Router>
+    );
   }
 }
 

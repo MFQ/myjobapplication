@@ -3,6 +3,7 @@
 import React from "react";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Input } from "react-materialize";
 
 type Props = {
   onValidate: func,
@@ -44,7 +45,22 @@ const JobApplicationForm = ({
         />
         <ErrorMessage name="coverLetter" component="div" />
 
-        <Field type="text" placeholder="Applied Date" name="appliedDate" />
+        <Field
+          name="appliedDate"
+          render={({ field, form: { isSubmitting, setFieldValue } }) => (
+            <Input
+              {...field}
+              disabled={isSubmitting}
+              name="on"
+              type="date"
+              placeholder="Applied Date"
+              onChange={function(e, value) {
+                setFieldValue("appliedDate", value);
+              }}
+            />
+          )}
+        />
+
         <ErrorMessage name="appliedDate" component="div" />
 
         <Field type="text" placeholder="Source" name="source" />
@@ -55,7 +71,7 @@ const JobApplicationForm = ({
 
         <Field
           type="text"
-          placeholder="Time Took to Apply"
+          placeholder="Time Took to Apply for example 10.00"
           name="timeTookToApply"
         />
         <ErrorMessage name="timeTookToApply" component="div" />

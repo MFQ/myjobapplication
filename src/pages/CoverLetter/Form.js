@@ -12,15 +12,18 @@ type Props = {
   submitLabel: string
 };
 
+const styles = {
+  editor: {
+    border: "1px solid gray",
+    minHeight: "6em"
+  }
+};
+
 class CoverLetterForm extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = { editorState: EditorState.createEmpty() };
-    // this.onChange = editorState => {
-    //   console.log(editorState.getCurrentContent());
-    //   debugger;
-    //   return this.setState({ editorState });
-    // };
+
     this.setEditor = editor => {
       this.editor = editor;
     };
@@ -52,19 +55,21 @@ class CoverLetterForm extends Component<Props> {
             <Field
               name="content"
               render={({ field, form: { isSubmitting, setFieldValue } }) => (
-                <Editor
-                  disabled={isSubmitting}
-                  ref={this.setEditor}
-                  editorState={this.state.editorState}
-                  onChange={editorState => {
-                    console.log(stateToHTML(editorState.getCurrentContent()));
-                    setFieldValue(
-                      "content",
-                      editorState.getCurrentContent().getPlainText()
-                    );
-                    return setState({ editorState });
-                  }}
-                />
+                <div style={styles.editor}>
+                  <Editor
+                    disabled={isSubmitting}
+                    ref={this.setEditor}
+                    editorState={this.state.editorState}
+                    onChange={editorState => {
+                      console.log(stateToHTML(editorState.getCurrentContent()));
+                      setFieldValue(
+                        "content",
+                        editorState.getCurrentContent().getPlainText()
+                      );
+                      return setState({ editorState });
+                    }}
+                  />
+                </div>
               )}
             />
             <ErrorMessage name="content" component="div" />
